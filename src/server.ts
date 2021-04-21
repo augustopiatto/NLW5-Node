@@ -1,14 +1,11 @@
-import express from "express"
+import express from "express";
 import "./database"; //importa por padrão o index.ts e o createConnection
+import { routes } from "./routes";
 
 const app = express();
 
-app.get("/", (request, response) => {
-  return response.send("Olá NLW5");
-});
+app.use(express.json());
 
-app.post("/users", (request, response) => {
-  return response.json(({ messsage: "Usuário salvo com sucesso!"}));
-});
+app.use(routes);
 
 app.listen(3333, () => console.log("Server tá rodando!"));
